@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
@@ -85,7 +87,7 @@ fun HomeScreen(modifier: Modifier = Modifier) { //funcao de composicao (sempre c
                         contentColor = Color.White
                     ),
 
-            ){
+                ){
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
@@ -117,7 +119,10 @@ fun HomeScreen(modifier: Modifier = Modifier) { //funcao de composicao (sempre c
                     }
                     Button(
                         onClick = {},
-                        shape= RoundedCornerShape(8.dp)
+                        shape= RoundedCornerShape(8.dp),
+                        colors =ButtonDefaults.buttonColors(
+                            Color(0xFF510683)
+                        )
                     ) {
                         Text(
                             text = stringResource(
@@ -141,4 +146,3 @@ private fun HomeScreenPreview() {
     //está chamando a funcao de composicao (+ split)
     HomeScreen()
 }
-
