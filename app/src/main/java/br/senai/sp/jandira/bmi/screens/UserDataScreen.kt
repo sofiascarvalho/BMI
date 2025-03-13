@@ -18,7 +18,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AddCircle
+import androidx.compose.material.icons.filled.Balance
 import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material.icons.filled.Height
+import androidx.compose.material.icons.filled.Numbers
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.Button
@@ -112,7 +115,7 @@ fun UserDataScreen(modifier: Modifier = Modifier) { //funcao de composicao (semp
                                     .size(120.dp),
                                 shape = CircleShape,
                                 colors = CardDefaults.cardColors(
-                                    containerColor = Color(0xff4169E1)
+                                    containerColor = Color(0xff0000ff)
                                 )
                             ){
                                 Image(
@@ -151,7 +154,7 @@ fun UserDataScreen(modifier: Modifier = Modifier) { //funcao de composicao (semp
                                     .size(120.dp),
                                 shape = CircleShape,
                                 colors = CardDefaults.cardColors(
-                                    containerColor = Color(0xffFF69B4)
+                                    containerColor = Color(0xFF5D0894)
                                 )
                             ){
                                 Image(
@@ -166,7 +169,7 @@ fun UserDataScreen(modifier: Modifier = Modifier) { //funcao de composicao (semp
                                 onClick = {},
                                 shape = RoundedCornerShape(20.dp),
                                 colors = ButtonDefaults.buttonColors(
-                                    Color(0xff8A2BE2)
+                                    Color(0xFF510683)
                                 ),
                                 modifier = Modifier
                                     .width(100.dp)
@@ -186,7 +189,7 @@ fun UserDataScreen(modifier: Modifier = Modifier) { //funcao de composicao (semp
                         label = { Text(text = "Age") },
                         leadingIcon = {
                             Icon(
-                                imageVector = Icons.Default.DateRange,
+                                imageVector = Icons.Default.Numbers,
                                 contentDescription = "",
                                 tint = Color(0xFF510683)
                             )
@@ -205,7 +208,7 @@ fun UserDataScreen(modifier: Modifier = Modifier) { //funcao de composicao (semp
                         label = { Text(text = "Weight") },
                         leadingIcon = {
                             Icon(
-                                imageVector = Icons.Default.Warning,
+                                imageVector = Icons.Default.Balance,
                                 contentDescription = "",
                                 tint = Color(0xFF510683)
                             )
@@ -224,7 +227,7 @@ fun UserDataScreen(modifier: Modifier = Modifier) { //funcao de composicao (semp
                         label = { Text(text = "Height") },
                         leadingIcon = {
                             Icon(
-                                imageVector = Icons.Default.Person,
+                                imageVector = Icons.Default.Height,
                                 contentDescription = "",
                                 tint = Color(0xFF510683)
                             )
