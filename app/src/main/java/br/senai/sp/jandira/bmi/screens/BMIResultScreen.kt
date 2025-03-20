@@ -139,6 +139,7 @@ fun BMIResultScreen(modifier: Modifier = Modifier){
                                     text = stringResource(
                                         R.string.your_age
                                     ),
+                                    color = Color(0xff4B0082),
                                     fontSize = 18.sp,
                                     fontWeight = FontWeight.Bold
                                 )
@@ -165,6 +166,7 @@ fun BMIResultScreen(modifier: Modifier = Modifier){
                                     text = stringResource(
                                         R.string.your_weight
                                     ),
+                                    color = Color(0xff4B0082),
                                     fontSize = 18.sp,
                                     fontWeight = FontWeight.Bold
                                 )
@@ -190,6 +192,7 @@ fun BMIResultScreen(modifier: Modifier = Modifier){
                                     text = stringResource(
                                         R.string.your_high
                                     ),
+                                    color = Color(0xff4B0082),
                                     fontSize = 18.sp,
                                     fontWeight = FontWeight.Bold
                                 )
@@ -201,6 +204,7 @@ fun BMIResultScreen(modifier: Modifier = Modifier){
                             .fillMaxWidth()
                             .padding(all = 15.dp)
                             .height(250.dp)
+                            .background(Color(0xff8A2BE2))
                     ){
 
                     }
