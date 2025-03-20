@@ -269,7 +269,7 @@ fun UserDataScreen(modifier: Modifier = Modifier) { //funcao de composicao (semp
 @Composable
 private fun UserDataScreenPreview() {
     //está chamando a funcao de composicao (+ split)
-    UserDataScreen()
+    //UserDataScreen()
 }
 
 
