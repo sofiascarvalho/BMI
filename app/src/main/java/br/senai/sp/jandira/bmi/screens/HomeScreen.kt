@@ -15,6 +15,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.AssignmentInd
+import androidx.compose.material.icons.filled.Error
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -45,6 +46,10 @@ import br.senai.sp.jandira.bmi.R
 fun HomeScreen(navegacao: NavHostController) { //funcao de composicao (sempre com letra maiuscula) que diz que vamos fazer composicao de tela
     var nameState= remember {
         mutableStateOf("")
+    }
+
+    var isErrorState= remember {
+        mutableStateOf(false)
     }
 
     //abrir ou criar arquivo SharedPreferences
@@ -144,15 +149,38 @@ fun HomeScreen(navegacao: NavHostController) { //funcao de composicao (sempre co
                                     contentDescription = "",
                                     tint = Color(0xFF510683)
                                 )
+                            },
+                            trailingIcon = {
+                                if(isErrorState.value){
+                                    Icon(
+                                        imageVector = Icons.Default.Error,
+                                        contentDescription = "",
+                                        tint = Color.Red
+                                    )
+                                }
+                            },
+                            isError = isErrorState.value,
+                            supportingText = {
+                                if (isErrorState.value){
+                                    Text(
+                                        text = stringResource(
+                                            R.string.isError_message
+                                        )
+                                    )
+                                }
                             }
                         )
                     }
                     Button(
                         // ao clicar, navegar para a tela de dados
                         onClick = {
-                            editor.putString("user_name", nameState.value)
-                            editor.apply()
-                            navegacao.navigate("dados")
+                            if(nameState.value.isEmpty()){
+                                isErrorState.value=true
+                            }else{
+                                editor.putString("user_name", nameState.value)
+                                editor.apply()
+                                navegacao.navigate("dados")
+                            }
                         },
                         shape= RoundedCornerShape(8.dp),
                         colors =ButtonDefaults.buttonColors(

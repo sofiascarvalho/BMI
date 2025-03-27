@@ -24,7 +24,9 @@ class MainActivity : ComponentActivity() {
                 ){
                         //quando a rota home for chamada,vamos para a tela criada
                         composable(route = "home"){ HomeScreen(navegacao) }
-                        composable(route = "dados"){ UserDataScreen() }
+                        composable(route = "dados"){ UserDataScreen(navegacao) }
+                        composable(route="resultado"){ BMIResultScreen(navegacao) }
+                        composable(route="dados"){ UserDataScreen(navegacao) }
                     }
                 //BMIResultScreen()
             }

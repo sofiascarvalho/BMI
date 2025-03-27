@@ -54,10 +54,11 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import br.senai.sp.jandira.bmi.R
 
 @Composable
-fun UserDataScreen(modifier: Modifier = Modifier) { //funcao de composicao (sempre com letra maiuscula) que diz que vamos fazer composicao de tela
+fun UserDataScreen(navegacao: NavHostController?) { //funcao de composicao (sempre com letra maiuscula) que diz que vamos fazer composicao de tela
     var ageState= remember {
         mutableStateOf("")
     }
@@ -250,7 +251,7 @@ fun UserDataScreen(modifier: Modifier = Modifier) { //funcao de composicao (semp
                         modifier = Modifier
                             .padding(top = 15.dp),
                         keyboardOptions = KeyboardOptions(
-                            keyboardType = KeyboardType.Decimal,
+                            keyboardType = KeyboardType.Number,
                             imeAction = ImeAction.Next
                         )
                     )
@@ -276,7 +277,7 @@ fun UserDataScreen(modifier: Modifier = Modifier) { //funcao de composicao (semp
                             .padding(top = 15.dp),
                         keyboardOptions = KeyboardOptions(
                             keyboardType = KeyboardType.Decimal,
-                            imeAction = ImeAction.Next
+                            imeAction = ImeAction.Done
                         )
                     )
                     Button(
@@ -285,12 +286,13 @@ fun UserDataScreen(modifier: Modifier = Modifier) { //funcao de composicao (semp
                             editor.putInt("weight", weightState.value.toInt())
                             editor.putFloat("height", heightState.value.toFloat())
                             editor.apply()
+                            navegacao!!.navigate("resultado")
                         },
                         shape = RoundedCornerShape(15.dp),
                         colors = ButtonDefaults.buttonColors(
                             Color(0xFF510683)
                         ),
-                        modifier = modifier
+                        modifier = Modifier
                             .padding(top = 80.dp)
                     ) {
                         Text(
@@ -313,7 +315,7 @@ fun UserDataScreen(modifier: Modifier = Modifier) { //funcao de composicao (semp
 @Composable
 private fun UserDataScreenPreview() {
     //está chamando a funcao de composicao (+ split)
-    UserDataScreen()
+    UserDataScreen(null)
 }
 
 
