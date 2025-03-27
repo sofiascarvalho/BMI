@@ -1,5 +1,6 @@
 package br.senai.sp.jandira.bmi.screens
 
+import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -33,6 +34,8 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -40,6 +43,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.HorizontalAlignmentLine
 import androidx.compose.ui.modifier.modifierLocalMapOf
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
@@ -54,6 +58,25 @@ import br.senai.sp.jandira.bmi.R
 
 @Composable
 fun UserDataScreen(modifier: Modifier = Modifier) { //funcao de composicao (sempre com letra maiuscula) que diz que vamos fazer composicao de tela
+    var ageState= remember {
+        mutableStateOf("")
+    }
+    var weightState= remember {
+        mutableStateOf("")
+    }
+    var heightState= remember {
+        mutableStateOf("")
+    }
+
+    val context= LocalContext.current
+    val userFile=context
+        .getSharedPreferences("userFile", Context.MODE_PRIVATE)
+
+    val userName=userFile.getString("user_name", "User name not found!")
+
+    val editor=userFile.edit()
+
+
     Box(
         modifier = Modifier
             .fillMaxSize() //do tamanho maximo dentro do pai, ou seja, do celular
@@ -75,7 +98,7 @@ fun UserDataScreen(modifier: Modifier = Modifier) { //funcao de composicao (semp
             Text(
                 text = stringResource(
                     R.string.hi
-                ),
+                ) + ", $userName!",
                 modifier = Modifier
                     .padding(start = 20.dp, top = 40.dp),
                 color = Color.White,
@@ -184,9 +207,15 @@ fun UserDataScreen(modifier: Modifier = Modifier) { //funcao de composicao (semp
                         }
                     }
                     OutlinedTextField(
-                        value = "",
-                        onValueChange = {},
-                        label = { Text(text = "Age") },
+                        value = ageState.value,
+                        onValueChange = {
+                            ageState.value=it
+                        },
+                        label = {
+                            Text(text = stringResource(
+                                R.string.age
+                            ))
+                                },
                         leadingIcon = {
                             Icon(
                                 imageVector = Icons.Default.Numbers,
@@ -203,9 +232,13 @@ fun UserDataScreen(modifier: Modifier = Modifier) { //funcao de composicao (semp
                         )
                     )
                     OutlinedTextField(
-                        value = "",
-                        onValueChange = {},
-                        label = { Text(text = "Weight") },
+                        value = weightState.value,
+                        onValueChange = {
+                            weightState.value=it
+                        },
+                        label = { Text(text = stringResource(
+                            R.string.weight
+                        )) },
                         leadingIcon = {
                             Icon(
                                 imageVector = Icons.Default.Balance,
@@ -222,9 +255,15 @@ fun UserDataScreen(modifier: Modifier = Modifier) { //funcao de composicao (semp
                         )
                     )
                     OutlinedTextField(
-                        value = "",
-                        onValueChange = {},
-                        label = { Text(text = "Height") },
+                        value = heightState.value,
+                        onValueChange = {
+                            heightState.value=it
+                        },
+                        label = {
+                            Text(text = stringResource(
+                            R.string.height
+                        ))
+                                },
                         leadingIcon = {
                             Icon(
                                 imageVector = Icons.Default.Height,
@@ -241,7 +280,12 @@ fun UserDataScreen(modifier: Modifier = Modifier) { //funcao de composicao (semp
                         )
                     )
                     Button(
-                        onClick = {},
+                        onClick = {
+                            editor.putInt("age", ageState.value.toInt())
+                            editor.putInt("weight", weightState.value.toInt())
+                            editor.putFloat("height", heightState.value.toFloat())
+                            editor.apply()
+                        },
                         shape = RoundedCornerShape(15.dp),
                         colors = ButtonDefaults.buttonColors(
                             Color(0xFF510683)
@@ -269,7 +313,7 @@ fun UserDataScreen(modifier: Modifier = Modifier) { //funcao de composicao (semp
 @Composable
 private fun UserDataScreenPreview() {
     //está chamando a funcao de composicao (+ split)
-    //UserDataScreen()
+    UserDataScreen()
 }
 
 

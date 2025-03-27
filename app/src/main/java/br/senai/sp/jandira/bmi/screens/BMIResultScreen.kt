@@ -184,13 +184,13 @@ fun BMIResultScreen(modifier: Modifier = Modifier){
                             ){
                                 Text(
                                     text = stringResource(
-                                        R.string.high
+                                        R.string.height
                                     ),
                                     fontSize = 18.sp
                                 )
                                 Text(
                                     text = stringResource(
-                                        R.string.your_high
+                                        R.string.your_height
                                     ),
                                     color = Color(0xff4B0082),
                                     fontSize = 18.sp,

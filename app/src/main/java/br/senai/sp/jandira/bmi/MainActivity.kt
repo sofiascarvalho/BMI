@@ -17,7 +17,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             BMITheme {
                 //vai lembrar das telas onde passamos e a sequencia delas
-                /*var navegacao= rememberNavController()
+                var navegacao= rememberNavController()
                     NavHost(
                         navController=navegacao,
                         startDestination = "home" //nome de associacao a tela
@@ -25,8 +25,8 @@ class MainActivity : ComponentActivity() {
                         //quando a rota home for chamada,vamos para a tela criada
                         composable(route = "home"){ HomeScreen(navegacao) }
                         composable(route = "dados"){ UserDataScreen() }
-                    }*/
-                BMIResultScreen()
+                    }
+                //BMIResultScreen()
             }
         }
     }
