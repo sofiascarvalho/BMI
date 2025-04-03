@@ -34,6 +34,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
@@ -43,7 +44,7 @@ import androidx.navigation.NavHostController
 import br.senai.sp.jandira.bmi.R
 
 @Composable
-fun HomeScreen(navegacao: NavHostController) { //funcao de composicao (sempre com letra maiuscula) que diz que vamos fazer composicao de tela
+fun HomeScreen(navegacao: NavHostController?) { //funcao de composicao (sempre com letra maiuscula) que diz que vamos fazer composicao de tela
     var nameState= remember {
         mutableStateOf("")
     }
@@ -141,7 +142,8 @@ fun HomeScreen(navegacao: NavHostController) { //funcao de composicao (sempre co
                                 .padding(top = 5.dp),
                             keyboardOptions = KeyboardOptions(
                                 keyboardType = KeyboardType.Text,
-                                capitalization = KeyboardCapitalization.Sentences
+                                capitalization = KeyboardCapitalization.Sentences,
+                                imeAction = ImeAction.Done
                             ),
                             leadingIcon = {
                                 Icon(
@@ -179,7 +181,7 @@ fun HomeScreen(navegacao: NavHostController) { //funcao de composicao (sempre co
                             }else{
                                 editor.putString("user_name", nameState.value)
                                 editor.apply()
-                                navegacao.navigate("dados")
+                                navegacao!!.navigate("dados")
                             }
                         },
                         shape= RoundedCornerShape(8.dp),
@@ -207,5 +209,5 @@ fun HomeScreen(navegacao: NavHostController) { //funcao de composicao (sempre co
 @Composable
 private fun HomeScreenPreview() {
     //está chamando a funcao de composicao (+ split)
-    //HomeScreen(navegacao)
+    HomeScreen(null)
 }

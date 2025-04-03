@@ -127,7 +127,7 @@ fun UserDataScreen(navegacao: NavHostController?) { //funcao de composicao (semp
                     Row (
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(top = 50.dp),
+                            .padding(top = 35.dp),
                         horizontalArrangement = Arrangement.SpaceEvenly
                     ){
                         Column (

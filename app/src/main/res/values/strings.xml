@@ -19,4 +19,10 @@
     <string name="your_height" >178cm</string>
     <string name="new_calcule" >New Calc</string>
     <string name="isError_message">O nome é obrigatório!</string>
+    <string name="obesity_1">You have class I Obesity!</string>
+    <string name="obesity_2">You have class II Obesity!</string>
+    <string name="obesity_3">You have class III Obesity!</string>
+    <string name="under_weight">You are below your ideal weight!</string>
+    <string name="normal">You have normal body weight!</string>
+    <string name="over_weight">You are slightly overweight!</string>
 </resources>
